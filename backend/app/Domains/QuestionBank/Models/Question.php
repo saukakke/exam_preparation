@@ -22,4 +22,5 @@ final class Question extends Model
     public function choices(): HasMany { return $this->hasMany(QuestionChoice::class); }
     public function versions(): HasMany { return $this->hasMany(QuestionVersion::class); }
     public function tags(): BelongsToMany { return $this->belongsToMany(QuestionTag::class, 'question_question_tag'); }
+    public function reviewHistories(): HasMany { return $this->hasMany(QuestionReviewHistory::class); }
 }
