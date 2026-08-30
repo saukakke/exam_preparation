@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Domains\Academics\Http\Controllers\Api\V1\AcademicSessionController;
 use App\Domains\Identity\Http\Controllers\Api\V1\AuthController;
 use App\Domains\Identity\Http\Controllers\Api\V1\PasswordController;
 use App\Domains\Organizations\Http\Controllers\Api\V1\OrganizationController;
@@ -19,5 +20,7 @@ Route::prefix('v1')->group(function (): void {
     });
     Route::middleware('auth:sanctum')->group(function (): void {
         Route::post('/organizations', [OrganizationController::class, 'store']);
+        Route::get('/academic-sessions', [AcademicSessionController::class, 'index']);
+        Route::post('/academic-sessions', [AcademicSessionController::class, 'store']);
     });
 });
