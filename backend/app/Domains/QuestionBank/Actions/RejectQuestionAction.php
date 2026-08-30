@@ -18,6 +18,7 @@ final class RejectQuestionAction
     {
         if (! $reviewer->can('questions.approve')) throw ValidationException::withMessages(['question'=>'You are not authorized to review questions.']);
         if ($question->status !== QuestionStatus::InReview) throw ValidationException::withMessages(['question'=>'Only questions in review can be rejected.']);
+        if (trim($comment) === '') throw ValidationException::withMessages(['comment'=>'A rejection reason is required.']);
         return $this->db->transaction(function () use ($reviewer,$question,$comment): Question {
             $question->update(['status'=>QuestionStatus::Rejected]);
             $question->reviewHistories()->create(['reviewer_id'=>$reviewer->id,'action'=>QuestionReviewAction::Rejected,'comment'=>$comment]);
