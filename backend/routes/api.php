@@ -25,6 +25,7 @@ Route::prefix('v1')->group(function (): void {
         Route::get('/questions',[QuestionController::class,'index']); Route::post('/questions',[QuestionController::class,'store']);
         Route::post('/questions/{question}/submit-review',[QuestionReviewController::class,'submit']); Route::post('/questions/{question}/review',[QuestionReviewController::class,'review']);
         Route::post('/questions/{question}/choices',[QuestionChoiceController::class,'store']);
+        Route::patch('/question-choices/{choice}',[QuestionChoiceController::class,'update']); Route::delete('/question-choices/{choice}',[QuestionChoiceController::class,'destroy']);
         Route::get('/question-topics',[QuestionTopicController::class,'index']); Route::post('/question-topics',[QuestionTopicController::class,'store']);
         Route::get('/question-tags',[QuestionTagController::class,'index']); Route::post('/question-tags',[QuestionTagController::class,'store']);
     });
