@@ -15,7 +15,7 @@ final class OrganizationController extends Controller
 {
     public function store(CreateOrganizationRequest $request, CreateOrganizationAction $action): JsonResponse
     {
-        $organization = $action->execute($request->user(), OrganizationType::from($request->string('type')->toString()), $request->string('name')->toString(), $request->input('email'));
+        $organization = $action->execute($request->user(), $request->string('name')->toString(), OrganizationType::from($request->string('type')->toString()), $request->input('email'));
         return (new OrganizationResource($organization))->response()->setStatusCode(201);
     }
 }
