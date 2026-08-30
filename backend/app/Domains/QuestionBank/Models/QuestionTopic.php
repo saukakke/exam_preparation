@@ -14,4 +14,5 @@ final class QuestionTopic extends Model
     protected $fillable = ['subject_id','parent_id','name','slug','description'];
     public function parent(): BelongsTo { return $this->belongsTo(self::class, 'parent_id'); }
     public function children(): HasMany { return $this->hasMany(self::class, 'parent_id'); }
+    public function questions(): HasMany { return $this->hasMany(Question::class, 'topic_id'); }
 }
