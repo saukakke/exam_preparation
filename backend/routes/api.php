@@ -6,8 +6,11 @@ use App\Domains\Academics\Http\Controllers\Api\V1\AcademicSessionController;
 use App\Domains\Identity\Http\Controllers\Api\V1\AuthController;
 use App\Domains\Identity\Http\Controllers\Api\V1\PasswordController;
 use App\Domains\Organizations\Http\Controllers\Api\V1\OrganizationController;
+use App\Domains\QuestionBank\Http\Controllers\Api\V1\QuestionChoiceController;
 use App\Domains\QuestionBank\Http\Controllers\Api\V1\QuestionController;
 use App\Domains\QuestionBank\Http\Controllers\Api\V1\QuestionReviewController;
+use App\Domains\QuestionBank\Http\Controllers\Api\V1\QuestionTagController;
+use App\Domains\QuestionBank\Http\Controllers\Api\V1\QuestionTopicController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function (): void {
@@ -20,7 +23,9 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/organizations',[OrganizationController::class,'store']);
         Route::get('/academic-sessions',[AcademicSessionController::class,'index']); Route::post('/academic-sessions',[AcademicSessionController::class,'store']);
         Route::get('/questions',[QuestionController::class,'index']); Route::post('/questions',[QuestionController::class,'store']);
-        Route::post('/questions/{question}/submit-review',[QuestionReviewController::class,'submit']);
-        Route::post('/questions/{question}/review',[QuestionReviewController::class,'review']);
+        Route::post('/questions/{question}/submit-review',[QuestionReviewController::class,'submit']); Route::post('/questions/{question}/review',[QuestionReviewController::class,'review']);
+        Route::post('/questions/{question}/choices',[QuestionChoiceController::class,'store']);
+        Route::get('/question-topics',[QuestionTopicController::class,'index']); Route::post('/question-topics',[QuestionTopicController::class,'store']);
+        Route::get('/question-tags',[QuestionTagController::class,'index']); Route::post('/question-tags',[QuestionTagController::class,'store']);
     });
 });
