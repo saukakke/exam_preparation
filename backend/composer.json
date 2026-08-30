@@ -1,1 +1,50 @@
-{"name":"saukakke/exam-preparation-api","type":"project","require":{"php":"^8.4"},"require-dev":{"laravel/pint":"^1.0","pestphp/pest":"^3.0"},"autoload":{"psr-4":{"App\\":"app/","App\\Domains\\":"app/Domains/","App\\Shared\\":"app/Shared/"}}}
+{
+  "name": "saukakke/exam-preparation-api",
+  "type": "project",
+  "description": "Enterprise AI Exam Preparation Platform API",
+  "require": {
+    "php": "^8.4",
+    "laravel/framework": "^12.0",
+    "laravel/sanctum": "^4.0",
+    "laravel/horizon": "^5.0",
+    "laravel/reverb": "^1.0",
+    "laravel/scout": "^10.0",
+    "meilisearch/meilisearch-php": "^1.0",
+    "spatie/laravel-permission": "^6.0",
+    "spatie/laravel-medialibrary": "^11.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.18",
+    "pestphp/pest": "^3.8",
+    "pestphp/pest-plugin-laravel": "^3.1",
+    "nunomaduro/larastan": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "App\\Domains\\": "app/Domains/",
+      "App\\Shared\\": "app/Shared/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php artisan package:discover --ansi"
+    ],
+    "test": "@php artisan test",
+    "analyse": "@php vendor/bin/phpstan analyse",
+    "lint": "@php vendor/bin/pint --test"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
